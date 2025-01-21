@@ -1,0 +1,36 @@
+@mixin primaryButton{
+    background-color: #00ADFF;
+    color: #fff;
+    font-size: 15px;
+    border-color: #00ADFF;
+    border-radius: 50px;
+    outline: none;
+    border: 1px solid $primaryColor;
+    padding: 17px 45px;
+    display: inline-block;
+    font-weight: 700;
+    box-shadow: 0 7px 25px rgba(0,173,255,0.2);
+    line-height: normal;
+}
+
+@mixin secondaryButton{
+    color: $secondaryColor;
+    border-radius: 50px;
+    outline: none;
+    background-color: $bgWhite;
+    font-size: 15px;
+    border: 1px solid $secondaryColor;
+    padding: 17px 45px;
+    display: inline-block;
+    font-weight: 700;
+    box-shadow: 0 7px 25px rgba(249,249,249,0.2);
+    line-height: normal;
+}
+
+@mixin boxshadowPrimary{
+    $primary-box-shadow: 0 7px 25px rgba(0,173,255,0.2);
+}
+
+@mixin boxshadowSecondary{
+    $secondary-box-shadow: 0 7px 25px rgba(249,249,249,0.2);
+}
