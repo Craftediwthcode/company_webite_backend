@@ -32,7 +32,6 @@
     <link rel="stylesheet" href="{{ URL::asset('assets/backend/css/daterangepicker.css') }}">
     <link href="{{ URL::asset('assets/backend/css/style.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ URL::asset('assets/backend/css/icons.min.css') }}" rel="stylesheet" type="text/css">
-    <link href="{{ URL::asset('assets/css/custom.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ URL::asset('assets/backend/css/toastr.min.css') }}" rel="stylesheet" type="text/css">
     <script src="{{ URL::asset('assets/backend/js/config.js') }}"></script>
     <style>
@@ -156,13 +155,21 @@
         div.dataTables_wrapper div.dataTables_length label {
             margin-bottom: 10px !important;
         }
-        table.dataTable thead>tr>th.sorting:before,table.dataTable thead>tr>th.sorting:after{
-            opacity:0.5;
-        }
-        table.dataTable thead>tr>th.sorting_asc:before,table.dataTable thead>tr>th.sorting_desc:after{
-            opacity:6;
+
+        table.dataTable thead>tr>th.sorting:before,
+        table.dataTable thead>tr>th.sorting:after {
+            opacity: 0.5;
         }
 
+        table.dataTable thead>tr>th.sorting_asc:before,
+        table.dataTable thead>tr>th.sorting_desc:after {
+            opacity: 6;
+        }
+
+        .error {
+            font-weight: 600;
+            color: #e30c0c
+        }
     </style>
 </head>
 

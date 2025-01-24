@@ -26,6 +26,12 @@
                                             <option value="inactive">{{ __('Inactive') }}</option>
                                         </select>
                                     </div>
+                                    <div class="col-md-4">
+                                        <label for="select-status">{{ __('Page') }}</label>
+                                        <select class="form-control" id="pages" name="pages">
+                                            <option value="" disabled selected>{{ __('Please Select') }}</option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -58,6 +64,7 @@
                                                 <th>{{ __('Date') }}</th>
                                                 <th>{{ __('Action') }}</th>
                                                 <th>{{ __('Status') }}</th>
+                                                <th>{{ __('Pages')}}</th>
                                                 <th>{{ __('Title') }}</th>
                                             </tr>
                                         </thead>
@@ -118,6 +125,7 @@
                     url: "{{ route('sub-section.ajaxTable') }}",
                     data: function(d) {
                         d.status = $('#status').val();
+                        d.pages = $('#pages').val();
                     },
                 },
                 dataType: 'html',
@@ -141,6 +149,13 @@
                         name: 'status',
                         searchable: false,
                         orderable: false,
+                        defaultContent: 'NA'
+                    },
+                    {
+                        data: 'parent.title',
+                        name: 'parent.title',
+                        searchable: true,
+                        orderable: true,
                         defaultContent: 'NA'
                     },
                     {
@@ -204,7 +219,7 @@
                     });
                 }
             });
-            $('#status').on('change', function() {
+            $('#status,#pages').on('change', function() {
                 table.draw();
                 window.scroll({
                     top: document.body.scrollHeight,
@@ -228,6 +243,33 @@
                     e.preventDefault();
                     table.ajax.reload(null, false);
                 }
+            });
+            $('#pages').select2({
+                placeholder: "{{ __('Please Select') }}",
+                allowClear: true,
+                ajax: {
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    type: "GET",
+                    url: "{{ route('page.fetchParentPages') }}",
+                    dataType: 'json',
+                    processResults: function(data) {
+                        return {
+                            results: data.map(function(item) {
+                                return {
+                                    id: item.id,
+                                    text: item.title.charAt(0).toUpperCase() + item
+                                        .title.slice(1)
+                                };
+                            })
+                        };
+                    },
+                    cache: true
+                },
+                minimumInputLength: 0
+            }).on('select2:select', function(e) {
+                $('#pages-error').hide();
             });
         });
     </script>

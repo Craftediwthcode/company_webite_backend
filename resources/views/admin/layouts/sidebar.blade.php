@@ -3,9 +3,9 @@
     <div class="logo-box">
         <!-- Brand Logo Dark -->
         <a href="{{ route('dashboard') }}" class="logo-dark">
-            <img src="{{ URL::asset('assets/backend/images/logo.svg') }}" alt="dark logo" class="logo-lg"
+            <img src="{{ \App\Helpers\Helper::getImageUrl(\App\Models\Setting::where('key', 'logo')->value('value') ?? '') }}" alt="dark logo" class="logo-lg"
                 height="48">
-            <img src="{{ URL::asset('assets/backend/images/logo.svg') }}" alt="small logo" class="logo-sm"
+            <img src="{{ \App\Helpers\Helper::getImageUrl(\App\Models\Setting::where('key', 'logo')->value('value') ?? '') }}" alt="small logo" class="logo-sm"
                 height="38">
         </a>
     </div>
@@ -34,6 +34,14 @@
                     <span class="menu-icon"><img src="{{ asset('assets/backend/images/icon/sections.png') }}"
                             width="25px"></span>
                     <span class="menu-text">{{ __('Sub Sections') }}</span>
+                </a>
+            </li>
+            <li class="menu-title">{{ __('Our Work') }}</li>
+            <li class="menu-item {{ Request::segment(2) == 'our-work' ? 'active' : '' }}">
+                <a href="{{ route('our-work.index')}}" class="menu-link waves-effect waves-light">
+                    <span class="menu-icon"><img src="{{ asset('assets/backend/images/icon/static.png') }}"
+                            width="25px"></span>
+                    <span class="menu-text">{{ __('Our Work') }}</span>
                 </a>
             </li>
             <li class="menu-title">{{ __('Contact US') }}</li>

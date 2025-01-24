@@ -7,7 +7,8 @@ use App\Http\Controllers\Admin\{
     PageController,
     SubSectionController,
     ContactUsController,
-    SettingController
+    SettingController,
+    OurWorkController
 };
 //authenticate admin
 Route::get('/admin', [AuthController::class, 'showLoginForm'])->name('admin');
@@ -53,4 +54,9 @@ Route::group(['prefix' => 'admin'], function () {
     //Setting routes
     Route::get('/setting', [SettingController::class, 'setting'])->name('setting.list');
     Route::post('/update/support', [SettingController::class, 'updateSupport'])->name('update.support');
+    Route::post('/update/logo', [SettingController::class, 'updateLogo'])->name('update.logo');
+
+    //Our work routes
+    Route::get('/our-work/ajax/table', [OurWorkController::class, 'ajaxTable'])->name('our-work.ajaxTable');
+    Route::resource('our-work', OurWorkController::class);
 });

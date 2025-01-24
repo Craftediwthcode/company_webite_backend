@@ -40,12 +40,12 @@
                                 <label class="col-form-label" for="title">{{ __('Title') }}</label><span
                                     class="text-danger fs-4 fw-bold">*</span>
                                 <input type="text" class="form-control" id="title" name="title"
-                                    value="{{ old('title', $module_data->title ?? '') }}" placeholder="{{ __('Title') }}" maxlength="50">
+                                    value="{{ old('title', $module_data->title ?? '') }}" placeholder="{{ __('Title') }}">
                             </div>
                             <div class="col-md-4">
                                 <label class="col-form-label" for="sub_title">{{ __('Sub Title') }}</label>
                                 <input type="text" class="form-control"  name="sub_title"
-                                    value="{{ old('sub_title', $module_data->sub_title ?? '') }}" placeholder="{{ __('Sub Title') }}" maxlength="50">
+                                    value="{{ old('sub_title', $module_data->sub_title ?? '') }}" placeholder="{{ __('Sub Title') }}">
                             </div>
                             <div class="col-md-4">
                                 <label class="col-form-label" for="image">{{ __('Main Image') }}</label>
@@ -148,12 +148,12 @@
                         lettersonly: false,
                         noSpaceAtStart: true,
                         noTwoSpaces: true,
-                        minlength: 2,
-                        maxlength: 50,
+                        // minlength: 2,
+                        // maxlength: 50,
                     },
                     sub_title:{
                         required: false,
-                        lettersonly: true,
+                        lettersonly: false,
                     },
                     description: {
                         required: true

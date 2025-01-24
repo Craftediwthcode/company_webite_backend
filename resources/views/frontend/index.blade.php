@@ -112,38 +112,18 @@
         </div>
         <div class="container pt-5">
             <div class="row gy-4">
-                <div class="col-lg-3 col-md-6 d-flex flex-column align-items-center">
-                    <i class="bi bi-emoji-smile"></i>
-                    <div class="stats-item">
-                        <span data-purecounter-start="0" data-purecounter-end="50" data-purecounter-duration="1"
-                            class="purecounter">50</span>
-                        <p>Happy Clients</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 d-flex flex-column align-items-center">
-                    <i class="bi bi-journal-richtext"></i>
-                    <div class="stats-item">
-                        <span data-purecounter-start="0" data-purecounter-end="35" data-purecounter-duration="1"
-                            class="purecounter">35</span>
-                        <p>Projects</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 d-flex flex-column align-items-center">
-                    <i class="bi bi-headset"></i>
-                    <div class="stats-item">
-                        <span data-purecounter-start="0" data-purecounter-end="1463" data-purecounter-duration="1"
-                            class="purecounter">1463</span>
-                        <p>Hours Of Support</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 d-flex flex-column align-items-center">
-                    <i class="bi bi-people"></i>
-                    <div class="stats-item">
-                        <span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="1"
-                            class="purecounter">15</span>
-                        <p>Hard Workers</p>
-                    </div>
-                </div>
+                @if (count($our_works) > 0)
+                    @foreach ($our_works as $work)
+                        <div class="col-lg-3 col-md-6 d-flex flex-column align-items-center">
+                            <i class="bi bi-emoji-smile"></i>
+                            <div class="stats-item">
+                                <span data-purecounter-start="0" data-purecounter-end="{{ $work->count ?? 0 }}"
+                                    data-purecounter-duration="1" class="purecounter">{{ $work->count ?? 0 }}</span>
+                                <p>{{ $work->title ?? '' }}</p>
+                            </div>
+                        </div>
+                    @endforeach
+                @endif
             </div>
         </div>
     </section>

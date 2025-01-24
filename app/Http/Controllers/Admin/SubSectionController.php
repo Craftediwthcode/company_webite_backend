@@ -29,8 +29,13 @@ class SubSectionController extends Controller
     public function ajaxTable(Request $request)
     {
         $status = $request->status;
-        $pages = Page::where('parent_id', '!=', 0)->when($status !== null, function ($query) use ($status) {
+        $pages = $request->pages;
+        $pages = Page::where('parent_id', '!=', 0)->with('parent')
+        ->when($status !== null, function ($query) use ($status) {
             return $query->where('status', '=', $status);
+        })
+        ->when($request->pages !== null, function ($query) use ($pages) {
+            return $query->where('parent_id', '=', $pages);
         });
         return Datatables::of($pages)
             ->addIndexColumn()
