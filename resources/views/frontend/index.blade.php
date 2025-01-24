@@ -9,7 +9,7 @@
                 <div class="col-md-5">
                     <div class="content">
                         <img src="{{ asset('assets/frontend/images/shape.svg') }}" loading="lazy" class="shape-circle"
-                            alt="">
+                            alt="" width="50px" height="50px">
                         <h1>{{ $our_latest_program->title ?? '' }}</h1>
                         <p>{!! $our_latest_program->description ?? '' !!}</p>
                         <button class="primaryBtn me-2">View More</button>

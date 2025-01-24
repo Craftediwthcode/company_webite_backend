@@ -152,8 +152,8 @@
                         defaultContent: 'NA'
                     },
                     {
-                        data: 'parent.title',
-                        name: 'parent.title',
+                        data: 'parent_name',
+                        name: 'parent_name',
                         searchable: true,
                         orderable: true,
                         defaultContent: 'NA'

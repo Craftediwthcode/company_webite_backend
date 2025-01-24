@@ -42,12 +42,15 @@ class SubSectionController extends Controller
             ->editColumn('status', function ($data) {
                 return "<div class='col-sm-2'><input type='checkbox' name='my-checkbox' class='bs-switch bootstrap-switch-small mb-2 pb-2' id='bs-switch" . $data->id . "' " . ($data->status == 'active' ? 'checked' : '') . "  data-bootstrap-switch data-off-color='danger' data-on-color='success'></div>";
             })
-            ->addColumn('action', function ($data) {
+            ->editColumn('action', function ($data) {
                 $action = "";
                 $action = '<a href="' . route('sub-section.edit', $data->id) . '" title="Edit" class="btn btn-sm btn-info waves-effect waves-light"><i class="fa fa-edit"></i></a>';
                 return $action;
             })
-            ->rawColumns(['action', 'status'])
+            ->addColumn('parent_name', function ($data) {
+                return $data->parent->title ?? '';
+            })
+            ->rawColumns(['action', 'status','parent_name'])
             ->make(true);
     }
     /**
